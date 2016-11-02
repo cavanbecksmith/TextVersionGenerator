@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Text</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="js/jquery.min.js"></script>
+<!-- build:js js/main.min.js -->
+<script src="js/clipboard.min.js"></script>
+<!-- /build -->
+<!-- build:js js/disclaimer.min.js -->
+<script src="js/disclaimer.js"></script>
+<!-- /build -->
+<!-- build:css css/disclaimer.min.css -->
+<link rel="stylesheet" href="css/disclaimer.css" />
+<!-- /build -->
+<!-- build:css css/styles.min.css -->
+<link rel="stylesheet" href="css/styles.css" />
+<!-- /build -->
+</head>
+<body>
+
+<div class="wrapper">
+	<h2>Text version generator</h2>
+	<textarea rows="25" cols="130" id="text_area">text</textarea>
+	<div class="hidden"></div>
+	<div class="button">Convert</div>
+	<br>
+	<div class="output"></div>
+	<button class="btn" data-clipboard-action="copy" data-clipboard-target=".output">Copy to clipboard</button>
+</div>
+
+
+<script type="text/javascript">
+    var clipboard = new Clipboard('.btn');
+
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+</script>
+<!-- build:js js/main.min.js -->
+<script src="js/main.js"></script>
+<!-- /build -->
+<!-- MAIN BANNER WRAPPER END -->
+</body>
+</html>
