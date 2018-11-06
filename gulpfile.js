@@ -35,6 +35,23 @@ gulp.task('scripts', () => {
     .pipe(reload({stream: true}));
 });
 
+gulp.task('scripts', () => {
+  return gulp.src('app/js/**/*.js')
+    .pipe($.plumber())
+    .pipe($.sourcemaps.init())
+    .pipe($.babel())
+    .pipe($.sourcemaps.write('.'))
+    .pipe(gulp.dest('.tmp/js'))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('js', () => {
+  return gulp.src('app/js/**/*.js')
+    .pipe(gulp.dest('dist/js'))
+    // .pipe(reload({stream: true}));
+});
+
+
 function lint(files, options) {
   return gulp.src(files)
     .pipe(reload({stream: true, once: true}))
@@ -163,7 +180,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras', 'js'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
