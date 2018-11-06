@@ -43,7 +43,7 @@ $(document).ready(function () {
 				var link = $(this).attr('href');
 				var link_text = $(this).text();
 				console.log(link_text);
-				var final_link = link_text + "\n" + "( " + link + " )";
+				var final_link = link_text + '\n' + '( ' + link + ' )';
 				$(this).replaceWith(final_link);
 			}
 		});
@@ -57,7 +57,7 @@ $(document).ready(function () {
 	function format_code(html) {
 
 		//replace style tag
-		var formatted_text = html.replace(/<\/?[^>]+(>|$)/g, "");
+		var formatted_text = html.replace(/<\/?[^>]+(>|$)/g, '');
 		//replace 2 new lines
 		formatted_text = formatted_text.replace(/(\r\n|\r|\n){2,}/g, '$1\n');
 		//replace 3 new lines / add break

@@ -5,9 +5,10 @@ const browserSync = require('browser-sync');
 const del = require('del');
 const wiredep = require('wiredep').stream;
 const runSequence = require('run-sequence');
-
+const chalk = require('chalk');
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
+const log = console.log;
 
 gulp.task('styles', () => {
   return gulp.src('app/styles/*.scss')
@@ -167,5 +168,22 @@ gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
 });
 
 gulp.task('default', () => {
-  runSequence(['clean', 'wiredep'], 'build');
+
+    log(chalk.cyan(`
+ ██████╗ █████╗ ██╗   ██╗ █████╗ ███╗   ██╗                            
+██╔════╝██╔══██╗██║   ██║██╔══██╗████╗  ██║                            
+██║     ███████║██║   ██║███████║██╔██╗ ██║                            
+██║     ██╔══██║╚██╗ ██╔╝██╔══██║██║╚██╗██║                            
+╚██████╗██║  ██║ ╚████╔╝ ██║  ██║██║ ╚████║                            
+ ╚═════╝╚═╝  ╚═╝  ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═══╝                            
+        `));
+
+    log(chalk.green(`                                                                  
+██████╗ ███████╗ ██████╗██╗  ██╗███████╗███╗   ███╗██╗████████╗██╗  ██╗
+██╔══██╗██╔════╝██╔════╝██║ ██╔╝██╔════╝████╗ ████║██║╚══██╔══╝██║  ██║
+██████╔╝█████╗  ██║     █████╔╝ ███████╗██╔████╔██║██║   ██║   ███████║
+██╔══██╗██╔══╝  ██║     ██╔═██╗ ╚════██║██║╚██╔╝██║██║   ██║   ██╔══██║
+██████╔╝███████╗╚██████╗██║  ██╗███████║██║ ╚═╝ ██║██║   ██║   ██║  ██║
+╚═════╝ ╚══════╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝╚═╝   ╚═╝   ╚═╝  ╚═╝`))
+
 });
